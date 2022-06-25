@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  // text-align: center;
+  padding-top: 30px;
+}
+
+.headButton {
+  background-color: red;
+  color: #fff;
+
+  &:hover {
+    background-color: green;
+  }
+}

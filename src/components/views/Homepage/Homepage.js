@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 // import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
+// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js'
 import styles from './Homepage.module.scss';
+import { Head } from '../../layout/Head/Head';
 
 const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Homepage</h2>
+  <main className={clsx(className, styles.root)}>
+    <Head/>
     {children}
-  </div>
+  </main>
 );
 
 Component.propTypes = {
