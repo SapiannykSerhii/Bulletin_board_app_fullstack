@@ -14,6 +14,7 @@ import { PostEdit } from './components/views/PostEdit/PostEdit';
 import { PostAdd } from './components/views/PostAdd/PostAdd';
 import { NotFound } from './components/views/NotFound/NotFound';
 import { Login } from './components/views/Login/Login';
+import { SinglePost } from './components/features/SinglePost/SinglePost';
 
 const theme = createTheme({
   palette: {
@@ -31,6 +32,7 @@ const App = () => (
               <Route exact path='/' component={Homepage} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/post/add' component={PostAdd} />
+              <Route exact path='/post/:id' component={SinglePost}/>
               <Route exact path='/post/:id' component={Post} />
               <Route exact path='/post/:id/edit' component={PostEdit} />
               <Route path='*' component={NotFound} />

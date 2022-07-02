@@ -1,4 +1,17 @@
 export const initialState = {
+
+  // isLogged: true,
+
+  user: {
+    loggedIn: true,
+    name: 'Serhii SSS',
+    role: 'user',
+    loading: {
+      active: true,
+      error: false,
+    },
+  },
+
   posts: {
     data: [
       {
@@ -77,10 +90,7 @@ export const initialState = {
         phone: '111-222-333-444',
         location: 'Gdansk',
       },
-
-
     ],
-    isLogged: true,
     loading: {
       active: false,
       error: false,

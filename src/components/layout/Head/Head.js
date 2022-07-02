@@ -4,20 +4,31 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getLoginState } from '../../../redux/loginRedux.js';
+// import { getLoginState } from '../../../redux/loginRedux.js';
 import { Typography } from '@mui/material';
 import styles from './Head.module.scss';
-import { Button, Container, Grid } from '@material-ui/core';
+import { Button, Grid, Container } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import { getLoginStatus } from '../../../redux/userRedux.js';
 
-const Component = ({className, children, isLogged }) => (
+const Component = ({ className, loginStatus }) => (
   <div className={clsx(className, styles.root)}>
-    <Container maxWidth='sm'>
-      <Typography align='center' variant='h4' color="textPrimary" gutterBottom>Bulleten Board</Typography>
+    <Container maxWidth="sm">
+      <Typography align="center" variant="h4" color="textPrimary" gutterBottom>
+        Bulleten Board
+      </Typography>
       <div>
-        <Grid container spacing={2} justifyContent='center' color='primary'>
+        <Grid container spacing={2} justifyContent="center" color="primary">
           <Grid>
-            {isLogged && <Button component={NavLink} to={`${process.env.PUBLIC_URL}/post/add`} className={styles.headButton}>Add new Ad</Button>}
+            {loginStatus && (
+              <Button
+                component={NavLink}
+                to={`${process.env.PUBLIC_URL}/post/add`}
+                className={styles.headButton}
+              >
+                Add new Ad
+              </Button>
+            )}
           </Grid>
         </Grid>
       </div>
@@ -26,13 +37,12 @@ const Component = ({className, children, isLogged }) => (
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
-  isLogged: PropTypes.array,
+  loginStatus: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isLogged: getLoginState(state),
+const mapStateToProps = (state) => ({
+  loginStatus: getLoginStatus(state),
 });
 
 const ReduxContainer = connect(mapStateToProps)(Component);

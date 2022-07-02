@@ -9,14 +9,14 @@ import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
 import { Login } from '../Login/Login';
 import { connect } from 'react-redux';
-import { getLoginState } from '../../../redux/loginRedux';
-import { postToAPI } from '../../../redux/postsRedux';
+// import { getLoginState } from '../../../redux/loginRedux';
+import { postToAPI } from '../../../redux/loginRedux';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import styles from './PostAdd.module.scss';
-
+import { getLoginStatus } from '../../../redux/userRedux';
 
 class Component extends React.Component {
   state = {
@@ -33,7 +33,7 @@ class Component extends React.Component {
       created: '',
       changed: '',
     },
-  }
+  };
 
   handleChange = (event) => {
     const { post } = this.state;
@@ -41,7 +41,7 @@ class Component extends React.Component {
     this.setState({
       post: { ...post, [event.target.name]: event.target.value },
     });
-  }
+  };
 
   submitForm = (e) => {
     const { post } = this.state;
@@ -63,12 +63,12 @@ class Component extends React.Component {
       alert('Your email adress is not valid!');
       error = 'wrong email';
     }
-    if (!error ) {
+    if (!error) {
       post.created = new Date().toISOString();
       post.changed = post.created;
 
       addNewPost(post);
-      console.log('add', addNewPost(post));
+      // console.log("add", addNewPost(post));
 
       alert('Thank you for your add!');
     } else {
@@ -77,16 +77,16 @@ class Component extends React.Component {
   };
 
   render() {
-    const {className, isLogged} = this.props;
+    const { className, logindStatus } = this.props;
     const { post } = this.state;
-    if(isLogged) {
+    if (logindStatus) {
       return (
         <div className={clsx(className, styles.root)}>
           <main className={styles.layout}>
             <Paper className={styles.paper}>
               <form onSubmit={this.submitForm}>
                 <Typography component="h1" variant="h4" align="center">
-                Add new advertisement
+                  Add new advertisement
                 </Typography>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
@@ -197,7 +197,7 @@ class Component extends React.Component {
                     className={styles.button}
                     type="submit"
                   >
-                  Add
+                    Add
                   </Button>
                 </div>
               </form>
@@ -205,7 +205,7 @@ class Component extends React.Component {
           </main>
         </div>
       );
-    } else {
+    } else if (!logindStatus) {
       return <Login />;
     }
   }
@@ -214,12 +214,12 @@ class Component extends React.Component {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  isLogged: PropTypes.array,
+  logindStatus: PropTypes.bool.isRequired,
   addNewPost: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  isLogged: getLoginState(state),
+const mapStateToProps = (state) => ({
+  logindStatus: getLoginStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -227,7 +227,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 
 export {
   // Component as PostAdd,
