@@ -17,10 +17,9 @@ import { Login } from './components/views/Login/Login';
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#2B4C6F' },
+    primary: {main: '#4caf50'},
   },
 });
-
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>

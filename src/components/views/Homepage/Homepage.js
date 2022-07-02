@@ -7,12 +7,14 @@ import clsx from 'clsx';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js'
 import styles from './Homepage.module.scss';
 import { Head } from '../../layout/Head/Head';
+import { AllPosts } from '../../features/AllPosts/AllPosts';
 
 const Component = ({className, children}) => (
-  <main className={clsx(className, styles.root)}>
+  <div className={clsx(className, styles.root)}>
     <Head/>
+    <AllPosts/>
     {children}
-  </main>
+  </div>
 );
 
 Component.propTypes = {

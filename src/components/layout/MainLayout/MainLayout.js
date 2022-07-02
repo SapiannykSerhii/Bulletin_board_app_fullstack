@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 import { NavBar } from '../../common/NavBar/NavBar';
-import { Footer } from '../Footer/Footer';
+// import { Footer } from '../Footer/Footer';
 import { updateLoginStatus } from '../../../redux/loginRedux';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -29,7 +29,7 @@ const Component = ({ className, children }) => (
       <Toolbar />
       {children}
     </Container>
-    <Footer />
+    {/* <Footer /> */}
   </div>
 );
 

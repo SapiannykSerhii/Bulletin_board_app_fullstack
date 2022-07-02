@@ -55,7 +55,11 @@ const Component = () => (
               Forgot password?
         </Link>
       </Typography>
-      <Button type='submit' variant='contained' color='primary' fullWidth>Login with google</Button>
+      <Link href='https://google.com'>
+        <Button type='submit' variant='contained' color='primary' fullWidth>
+          Login with google
+        </Button>
+      </Link>
       <Typography > Do you have an account?
         <Link href="#" underline="none">
               Sign up

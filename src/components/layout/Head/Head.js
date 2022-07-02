@@ -10,7 +10,7 @@ import styles from './Head.module.scss';
 import { Button, Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 
-const Component = ({className, children, isLogged}) => (
+const Component = ({className, children, isLogged }) => (
   <div className={clsx(className, styles.root)}>
     <Container maxWidth='sm'>
       <Typography align='center' variant='h4' color="textPrimary" gutterBottom>Bulleten Board</Typography>
