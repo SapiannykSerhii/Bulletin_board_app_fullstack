@@ -15,7 +15,7 @@ export const initialState = {
   posts: {
     data: [
       {
-        id: 1,
+        id: '1',
         title: 'Post 1',
         summary: 'Post summary post summary',
         content:
@@ -30,7 +30,7 @@ export const initialState = {
         location: 'Warsaw',
       },
       {
-        id: 2,
+        id: '2',
         title: 'Post 2',
         summary: 'Post summary post summary',
         content:
@@ -46,7 +46,7 @@ export const initialState = {
       },
 
       {
-        id: 3,
+        id: '3',
         title: 'Post 3',
         summary: 'Post summary post summary',
         content:
@@ -61,7 +61,7 @@ export const initialState = {
         location: 'Poznan',
       },
       {
-        id: 4,
+        id: '4',
         title: 'Post 4',
         summary: 'Post summary post summary',
         content:
@@ -76,7 +76,7 @@ export const initialState = {
         location: 'Lodz',
       },
       {
-        id: 5,
+        id: '5',
         title: 'Post 5',
         summary: 'Post summary post summary',
         content:

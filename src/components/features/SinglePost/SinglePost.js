@@ -22,6 +22,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { getPostById } from '../../../redux/postsRedux';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
+import { getLoginStatus } from '../../../redux/userRedux';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -52,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Component = ({ data }) => {
+const Component = ({ data, loginStatus }) => {
   console.log(data);
   const classes = useStyles();
 
@@ -67,11 +68,11 @@ const Component = ({ data }) => {
           }
           action={
             <>
-              <Link to={`${process.env.PUBLIC_URL}/post/${data.id}/edit`} key={data.id}>
+              {(!loginStatus) && <Link to={`${process.env.PUBLIC_URL}/post/${data.id}/edit`} key={data.id}>
                 <IconButton>
                   <EditIcon />
                 </IconButton>
-              </Link>
+              </Link>}
               <IconButton aria-label='settings'>
                 <MoreVertIcon />
               </IconButton>
@@ -110,7 +111,7 @@ const Component = ({ data }) => {
 
 Component.propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string,
     summary: PropTypes.string.isRequired,
@@ -124,11 +125,13 @@ Component.propTypes = {
     phone: PropTypes.string,
     location: PropTypes.string,
   }),
+  loginStatus: PropTypes.bool,
 };
 
 
 const mapStateToProps = (state, ownProps) => ({
-  data: getPostById(state, ownProps.match.params.id),
+  data: getPostById(state,  ownProps.match.params.id),
+  loginStatus: getLoginStatus(state),
 });
 
 // const mapDispatchToProps = dispatch => ({

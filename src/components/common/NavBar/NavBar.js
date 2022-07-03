@@ -13,7 +13,7 @@ import { getLoginStatus, getRole } from '../../../redux/userRedux';
 const Component = ({className, loginStatus}) => (
   <div className={clsx(className, styles.root)}>
     {loginStatus && <>
-      <Button className={styles.link} component={NavLink} exact to={`${process.env.PUBLIC_URL}/`} activeClassName='active'>Home</Button>{' '}
+      <Button className={styles.link} component={NavLink} exact to={`${process.env.PUBLIC_URL}/`} activeClassName='active'>Home</Button>
       <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/posts`} activeClassName='active'>My ADS</Button>
     </>}
     {!loginStatus && <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/login`} activeClassName='active'>Login in</Button>}
@@ -26,8 +26,8 @@ const Component = ({className, loginStatus}) => (
 Component.propTypes = {
   className: PropTypes.string,
   loginStatus: PropTypes.bool,
-  role: PropTypes.string,
-  // role: PropTypes.oneOf(['admin', 'user']),
+  // role: PropTypes.string,
+  role: PropTypes.oneOf(['admin', 'user']),
 };
 
 const mapStateToProps = state => ({
