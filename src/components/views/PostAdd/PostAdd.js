@@ -10,7 +10,7 @@ import clsx from 'clsx';
 import { Login } from '../Login/Login';
 import { connect } from 'react-redux';
 // import { getLoginState } from '../../../redux/loginRedux';
-import { postToAPI } from '../../../redux/loginRedux';
+import { postToAPI } from '../../../redux/postsRedux';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';

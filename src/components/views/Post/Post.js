@@ -17,6 +17,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
@@ -42,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: red[700],
   },
 }));
 
@@ -98,6 +100,11 @@ const Component = ({ data }) => {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
+      <Link to={`${process.env.PUBLIC_URL}/post/${data.id}`} key={data.id} underline='none'>
+        <Button color='default' variant='contained' size='small'>
+          Read More
+        </Button>
+      </Link>
       <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
           <Typography paragraph>Advertisement:</Typography>

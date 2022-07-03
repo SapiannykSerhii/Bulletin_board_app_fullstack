@@ -28,7 +28,7 @@ const Component = props => {
   const classes = useStyles();
   return (
     <div className={clsx(classes.root)}>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {props.posts.map(post => (
           <Grid
             key={post.id}
@@ -37,7 +37,7 @@ const Component = props => {
             xs={12}
             sm={6}
             md={4}
-            lg={3}
+            lg={1}
           >
             <Post data={post} />
           </Grid>
