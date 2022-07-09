@@ -2,79 +2,49 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import Container from '@material-ui/core/Container';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
+import { Card } from '@mui/material';
+import { Container } from '@mui/material';
+import { CardHeader } from '@mui/material';
+import { CardMedia } from '@mui/material';
+import { CardContent }from '@mui/material';
+import { CardActions } from '@mui/material';
 
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import { Avatar } from '@mui/material';
+import { IconButton } from '@mui/material';
+import { Typography }from '@mui/material';
+import  { red }  from '@mui/material/colors';
+import { Favorite } from '@mui/icons-material';
+import ShareIcon from '@mui/icons-material/Share';
+import { MoreVertRounded } from '@mui/icons-material';
 import { getPostById } from '../../../redux/postsRedux';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 import { getLoginStatus } from '../../../redux/userRedux';
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  root: {
-    width: '60%',
-    marginTop: '3rem',
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[700],
-  },
-}));
+import styles from './SinglePost.module.scss';
 
 const Component = ({ data, loginStatus }) => {
   console.log(data);
-  const classes = useStyles();
 
   return (
-    <Container className={classes.container}>
-      <Card className={classes.root}>
+    <Container className={styles.container}>
+      <Card className={styles.root}>
         <CardHeader
           avatar={
-            <Avatar aria-label='recipe' className={classes.avatar}>
+            <Avatar aria-label='recipe' sx={{ bgcolor: red[700] }}>
               {data.author[0]}
             </Avatar>
           }
           action={
             <>
-              {(!loginStatus) && <Link to={`${process.env.PUBLIC_URL}/post/${data.id}/edit`} key={data.id}>
+              {(loginStatus) && <Link to={`${process.env.PUBLIC_URL}/post/${data.id}/edit`} key={data.id}>
                 <IconButton>
                   <EditIcon />
                 </IconButton>
               </Link>}
               <IconButton aria-label='settings'>
-                <MoreVertIcon />
+                <MoreVertRounded
+                  fontSize='inherit'
+                  style={{ fontSize: '30px' }}/>
               </IconButton>
             </>
           }
@@ -82,7 +52,7 @@ const Component = ({ data, loginStatus }) => {
           subheader={data.publishedDate}
         />
         <CardMedia
-          className={classes.media}
+          className={styles.media}
           image={`${process.env.PUBLIC_URL}/images/${data.photo}`}
           title='Paella dish'
         />
@@ -93,7 +63,7 @@ const Component = ({ data, loginStatus }) => {
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label='add to favorites'>
-            <FavoriteIcon />
+            <Favorite />
           </IconButton>
           <IconButton aria-label='share'>
             <ShareIcon />

@@ -1,20 +1,20 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+import { Paper } from '@mui/material';
+import { Button } from '@mui/material';
+import { Typography } from '@mui/material';
+import { Grid } from '@mui/material';
+import { TextField } from '@mui/material';
 import clsx from 'clsx';
 import { Login } from '../Login/Login';
 import { connect } from 'react-redux';
 // import { getLoginState } from '../../../redux/loginRedux';
 import { postToAPI } from '../../../redux/postsRedux';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
+import { FormControl } from '@mui/material';
+import { Select } from '@mui/material';
+import { MenuItem } from '@mui/material';
+import { InputLabel } from '@mui/material';
 import styles from './PostAdd.module.scss';
 import { getLoginStatus } from '../../../redux/userRedux';
 

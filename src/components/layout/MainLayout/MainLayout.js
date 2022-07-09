@@ -7,9 +7,9 @@ import { NavBar } from '../../common/NavBar/NavBar';
 // import { Footer } from '../Footer/Footer';
 import { updateLoginStatus } from '../../../redux/loginRedux';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Container from '@material-ui/core/Container';
+import { AppBar } from '@mui/material';
+import { Toolbar } from '@mui/material';
+import { Container } from '@mui/material';
 
 import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';

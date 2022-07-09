@@ -1,55 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+
+import { Card } from '@mui/material';
+import { CardHeader } from '@mui/material';
+import { CardMedia } from '@mui/material';
+import { CardContent } from '@mui/material';
+import { CardActions } from '@mui/material';
+import { Collapse }from '@mui/material';
+import { Avatar } from '@mui/material';
+import { IconButton } from '@mui/material';
+import {Typography} from '@mui/material';
+import { red } from '@mui/material/colors';
+import { Favorite }from '@mui/icons-material';
+import { Share } from '@mui/icons-material';
+import { NavLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-// import styles from './Post.module.scss';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[700],
-  },
-}));
+import styles from './Post.module.scss';
 
 const Component = ({ data }) => {
-  const classes = useStyles();
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -57,23 +33,25 @@ const Component = ({ data }) => {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={styles.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label='recipe' className={classes.avatar}>
+          <Avatar aria-label='recipe' sx={{ bgcolor: red[700] }}>
             {data.author[0]}
           </Avatar>
         }
         action={
-          <IconButton aria-label='settings'>
-            <MoreVertIcon />
-          </IconButton>
+          <FormControlLabel
+            className={styles.accordion}
+            control={<Switch expanded={expanded} onChange={handleExpandClick} />}
+            label="Show"
+          />
         }
         title={data.title}
         subheader={data.publishedDate}
       />
       <CardMedia
-        className={classes.media}
+        className={styles.media}
         image={`${process.env.PUBLIC_URL}/images/${data.photo}`}
         title='Title'
       />
@@ -84,27 +62,18 @@ const Component = ({ data }) => {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label='add to favorites'>
-          <FavoriteIcon />
+          <Favorite />
         </IconButton>
         <IconButton aria-label='share'>
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label='show more'
-        >
-          <ExpandMoreIcon />
+          <Share />
         </IconButton>
       </CardActions>
-      <Link to={`${process.env.PUBLIC_URL}/post/${data.id}`} key={data.id} underline='none'>
-        <Button color='default' variant='contained' size='small'>
+      <Button
+        component={NavLink}
+        to={`${process.env.PUBLIC_URL}/post/${data.id}`} key={data.id} underline='none'
+        color='info' variant='contained' size='small'>
           Read More
-        </Button>
-      </Link>
+      </Button>
       <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
           <Typography paragraph>Advertisement:</Typography>

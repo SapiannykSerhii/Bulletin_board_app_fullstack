@@ -2,9 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { createTheme, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
-
 import { store } from './redux/store';
 
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
@@ -16,15 +13,21 @@ import { NotFound } from './components/views/NotFound/NotFound';
 import { Login } from './components/views/Login/Login';
 import { SinglePost } from './components/features/SinglePost/SinglePost';
 
+import { CssBaseline,  ThemeProvider, StyledEngineProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+
+// const muiTheme = responsiveFontSizes(createTheme({main: '#b2a300}));
 const theme = createTheme({
   palette: {
-    primary: {main: '#4caf50'},
+    primary: {main: '#b2a300'},
   },
 });
+
+
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <StylesProvider injectFirst>
+      <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <MainLayout>
@@ -39,7 +42,7 @@ const App = () => (
             </Switch>
           </MainLayout>
         </ThemeProvider>
-      </StylesProvider>
+      </StyledEngineProvider>
     </BrowserRouter>
   </Provider>
 );

@@ -1,4 +1,11 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  flex-grow: 1;
+}
+
+.iteam {
+  display: flex;
+  align-items: 'flex-start';
+  justify-content: center;
+}

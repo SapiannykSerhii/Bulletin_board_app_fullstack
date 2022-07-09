@@ -7,9 +7,10 @@ import { connect } from 'react-redux';
 // import { getLoginState } from '../../../redux/loginRedux.js';
 import { Typography } from '@mui/material';
 import styles from './Head.module.scss';
-import { Button, Grid, Container } from '@material-ui/core';
+import { Button, Grid, Container } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { getLoginStatus } from '../../../redux/userRedux.js';
+import { lightBlue } from '@mui/material/colors';
 
 const Component = ({ className, loginStatus }) => (
   <div className={clsx(className, styles.root)}>
@@ -22,6 +23,8 @@ const Component = ({ className, loginStatus }) => (
           <Grid>
             {loginStatus && (
               <Button
+                variant='contained'
+                sx={{ bgcolor: lightBlue[700] }}
                 component={NavLink}
                 to={`${process.env.PUBLIC_URL}/post/add`}
                 className={styles.headButton}

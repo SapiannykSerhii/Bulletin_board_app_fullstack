@@ -3,41 +3,30 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@mui/material';
 
 import { connect } from 'react-redux';
 import { getAll } from '../../../redux/postsRedux';
 
 import { Post } from '../../views/Post/Post';
 
-// import styles from './AllPosts.module.scss';
+import styles from './AllPosts.module.scss';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  item: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
-}));
 
 const Component = props => {
-  const classes = useStyles();
+
   return (
-    <div className={clsx(classes.root)}>
+    <div className={clsx(styles.root)}>
       <Grid container spacing={2}>
         {props.posts.map(post => (
           <Grid
             key={post.id}
-            className={classes.item}
+            className={styles.item}
             item
             xs={12}
             sm={6}
             md={4}
-            lg={1}
+            lg={3}
           >
             <Post data={post} />
           </Grid>

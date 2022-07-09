@@ -7,7 +7,7 @@ import styles from './NavBar.module.scss';
 import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 import { NavLink } from 'react-router-dom';
-import {Button} from '@material-ui/core';
+import { Button } from '@mui/material';
 import { getLoginStatus, getRole } from '../../../redux/userRedux';
 
 const Component = ({className, loginStatus}) => (
