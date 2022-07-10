@@ -37,7 +37,7 @@ class Component extends React.Component {
     },
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { postToEdit } = this.props;
     const { post } = this.state;
     this.setState({

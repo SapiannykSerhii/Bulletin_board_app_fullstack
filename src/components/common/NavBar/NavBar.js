@@ -8,16 +8,24 @@ import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { getLoginStatus, getRole } from '../../../redux/userRedux';
+import { getLoginStatus, getRole, updateUserStatus } from '../../../redux/userRedux';
+import { getLoginState, updateLoginStatus } from '../../../redux/loginRedux';
 
-const Component = ({className, loginStatus}) => (
+const Component = ({className, loginStatus, updateLoginStatus, updateUserStatus}) => (
   <div className={clsx(className, styles.root)}>
     {loginStatus && <>
       <Button className={styles.link} component={NavLink} exact to={`${process.env.PUBLIC_URL}/`} activeClassName='active'>Home</Button>
       <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/posts`} activeClassName='active'>My ADS</Button>
     </>}
-    {!loginStatus && <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/login`} activeClassName='active'>Login in</Button>}
-    {/* {loginStatus && <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/login`} activeClassName={styles.link}>Login in</Button>} */}
+    {loginStatus
+      ?
+      <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/`} activeClassName='active' onClick={() => {
+        updateLoginStatus('logout');
+        updateUserStatus(true);
+        // updateUserStatus(false)
+      }}
+      >Log out</Button>
+      : <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/login`} activeClassName='active'>Login in</Button>}
   </div>
 
 
@@ -28,18 +36,22 @@ Component.propTypes = {
   loginStatus: PropTypes.bool,
   // role: PropTypes.string,
   role: PropTypes.oneOf(['admin', 'user']),
+  updateLoginStatus: PropTypes.func,
+  updateUserStatus: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   loginStatus: getLoginStatus(state),
   role: getRole(state),
+  isAdmin: getLoginState(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  updateLoginStatus: log => dispatch(updateLoginStatus(log)),
+  updateUserStatus: log => dispatch(updateUserStatus(log)),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as NavBar,
