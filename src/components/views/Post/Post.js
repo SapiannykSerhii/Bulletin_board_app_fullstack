@@ -16,8 +16,12 @@ import { Favorite }from '@mui/icons-material';
 import { Share } from '@mui/icons-material';
 import { NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import { MoreVertRounded } from '@mui/icons-material';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
@@ -26,11 +30,12 @@ import styles from './Post.module.scss';
 
 const Component = ({ data }) => {
 
-  const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const [expanded, setExpanded] = React.useState(false);
+
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
 
   return (
     <Card className={styles.root}>
@@ -41,11 +46,11 @@ const Component = ({ data }) => {
           </Avatar>
         }
         action={
-          <FormControlLabel
-            className={styles.accordion}
-            control={<Switch expanded={expanded} onChange={handleExpandClick} />}
-            label="Show"
-          />
+          <IconButton aria-label='settings'>
+            <MoreVertRounded
+              fontSize='inherit'
+              style={{ fontSize: '30px' }}/>
+          </IconButton>
         }
         title={data.title}
         subheader={data.publishedDate}
@@ -74,12 +79,19 @@ const Component = ({ data }) => {
         color='info' variant='contained' size='small'>
           Read More
       </Button>
-      <Collapse in={expanded} timeout='auto' unmountOnExit>
-        <CardContent>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography align='center'>Show Content</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
           <Typography paragraph>Advertisement:</Typography>
           <Typography paragraph>{data.content}</Typography>
-        </CardContent>
-      </Collapse>
+        </AccordionDetails>
+      </Accordion>
     </Card>
   );
 };
