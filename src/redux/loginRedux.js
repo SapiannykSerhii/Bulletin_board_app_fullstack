@@ -1,7 +1,8 @@
 /* eslint-disable linebreak-style */
 
 /* selectors */
-export const getLoginState = (state) => state.isLogged;
+export const getAdminData = ({ admin }) => admin;
+export const getLoginState = ({ admin }) => admin.isLogged;
 
 /* action name creator */
 const reducerName = 'login';

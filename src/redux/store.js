@@ -4,16 +4,17 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
 import { reducer as postsReducer } from './postsRedux';
-// import  loginReducer from './loginRedux';
-
+import  loginRedux  from './loginRedux';
+import { reducer as userReducer } from './userRedux';
 // define reducers
 const reducers = {
   posts: postsReducer,
-  // isLogged: loginReducer,
+  users: userReducer,
+  admin: loginRedux,
 };
 
 // add blank reducers for initial state properties without reducers
-Object.keys(initialState).forEach(item => {
+Object.keys(initialState).forEach((item) => {
   if (typeof reducers[item] == 'undefined') {
     reducers[item] = (statePart = null) => statePart;
   }

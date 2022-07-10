@@ -1,4 +1,19 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  font-family: $font-family;
+}
+
+.layout {
+  padding: 40px;
+
+}
+
+.paper {
+  padding: 20px;
+  height: 700px;
+}
+
+.buttons {
+  margin-top: 2rem;
+}
