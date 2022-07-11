@@ -70,7 +70,7 @@ class Component extends React.Component {
   submitForm = (event) => {
     event.preventDefault();
     const { post } = this.state;
-    const { addPost } = this.props;
+    const { updatePost } = this.props;
 
     let error = null;
     // const emailPattern = /\S+@\S+\.\S+/;
@@ -91,7 +91,7 @@ class Component extends React.Component {
       post.updated = post.created;
       post.id = Math.random().toString(36).substr(2, 5);
 
-      addPost ({
+      updatePost ({
         ...post,
         created: new Date().toISOString(),
       });
@@ -124,7 +124,7 @@ class Component extends React.Component {
                   <TextField
                     required
                     name="title"
-                    value={post.title}
+                    // value={post.title}
                     placeholder="Title"
                     variant="filled"
                     onChange={this.handleChange}
@@ -137,7 +137,7 @@ class Component extends React.Component {
                   <TextField
                     required
                     name= "text"
-                    value={post.text}
+                    // value={post.text}
                     variant="filled"
                     placeholder="Give the full description"
                     onChange={this.handleChange}
@@ -150,7 +150,7 @@ class Component extends React.Component {
                   <TextField
                     required
                     name="email"
-                    value={post.email}
+                    // value={post.email}
                     variant="filled"
                     placeholder="Email address"
                     autoComplete="email"
@@ -165,7 +165,7 @@ class Component extends React.Component {
                     required
                     name="location"
                     variant="filled"
-                    value={post.location}
+                    // value={post.location}
                     placeholder="You location"
                     onChange={this.handleChange}
                     helperText="Edit location"
@@ -177,7 +177,7 @@ class Component extends React.Component {
                   <TextField
                     required
                     name="price"
-                    value={post.price}
+                    // value={post.price}
                     variant="filled"
                     placeholder="Price"
                     onChange={this.handleChange}
@@ -190,7 +190,7 @@ class Component extends React.Component {
                   <TextField
                     required
                     name="phone"
-                    value={post.phone}
+                    // value={post.phone}
                     variant="filled"
                     placeholder="Phone number"
                     onChange={this.handleChange}
@@ -225,7 +225,7 @@ class Component extends React.Component {
             </Paper>
           </Grid>
         ) : (
-          // <NotFound />
+        //   // <NotFound />
           <Login/>
         )};
       </div>

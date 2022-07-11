@@ -20,12 +20,16 @@ const Component = ({className, loginStatus, updateLoginStatus, updateUserStatus}
     {loginStatus
       ?
       <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/`} activeClassName='active' onClick={() => {
-        updateLoginStatus('logout');
-        updateUserStatus(true);
-        // updateUserStatus(false)
+        // updateLoginStatus('logout');
+        updateUserStatus('logout');
+        // updateLoginStatus(false)
       }}
-      >Log out</Button>
-      : <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/login`} activeClassName='active'>Login in</Button>}
+      >
+        Log out</Button>
+      :
+      <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/login`} activeClassName='active'
+      >Login in</Button>}
+
   </div>
 
 
