@@ -246,7 +246,6 @@ Component.propTypes = {
   updatePost: PropTypes.func,
   postToEdit: PropTypes.object,
   user: PropTypes.object,
-  addPost: PropTypes.func,
   loginStatus: PropTypes.bool,
   isAdmin: PropTypes.bool,
 };

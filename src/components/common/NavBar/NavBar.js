@@ -17,11 +17,12 @@ const Component = ({className, loginStatus, updateLoginStatus, updateUserStatus}
       <Button className={styles.link} component={NavLink} exact to={`${process.env.PUBLIC_URL}/`} activeClassName='active'>Home</Button>
       <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/posts`} activeClassName='active'>My ADS</Button>
     </>}
+
     {loginStatus
       ?
       <Button className={styles.link} component={NavLink} to={`${process.env.PUBLIC_URL}/`} activeClassName='active' onClick={() => {
-        // updateLoginStatus('logout');
         updateUserStatus('logout');
+        // updateUserStatus(true);
         // updateLoginStatus(false)
       }}
       >

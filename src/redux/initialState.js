@@ -1,8 +1,8 @@
 export const initialState = {
 
-  admin:{
-    isLogged: false,
-  },
+  // admin:{
+  //   isLogged: true,
+  // },
 
   user: {
     loggedIn: true,

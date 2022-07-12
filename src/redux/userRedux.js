@@ -37,7 +37,7 @@ export const updateUserStatus = payload => ({ payload, type: UPDATE_USER_STATUS 
 //         ...statePart,
 //         loggedIn: true,
 //         loading: {
-//           active: false,
+//           active: true,
 //           error: false,
 //         },
 //         data: action.payload,
