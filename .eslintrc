@@ -5,8 +5,12 @@
      "node": true,
      "jest": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+   },
+    "requireConfigFile": false,
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -19,7 +23,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "@babel"
   ],
   "extends": [
     "eslint:recommended",
